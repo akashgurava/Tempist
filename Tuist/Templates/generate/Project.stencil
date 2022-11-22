@@ -1,0 +1,56 @@
+import Foundation
+import ProjectDescription
+
+/// Project name.
+public let kProjectName = "{{name}}"
+/// Organization name.
+public let kOrgName = "{{org}}"
+/// Target platform.
+public let kPlatform: Platform = .iOS
+/// Minimum targeted version.
+public let kMinTgtVersion = "{{minTgt}}"
+/// Additional Plist details.
+public let kInfoPlist: [String: InfoPlist.Value] = [
+    // Store category.
+    "LSApplicationCategoryType": "public.app-category.finance",
+    // Version.
+    "CFBundleVersion": "0.1",
+    "CFBundleShortVersionString": "0.1",
+    // User Interface.
+    "UILaunchScreen": [:],
+    "UISupportedInterfaceOrientations": [
+        "UIInterfaceOrientationPortrait"
+    ],
+    "UISupportedInterfaceOrientations~ipad": [
+        "UIInterfaceOrientationPortrait"
+    ]
+]
+
+/// Tuist Project description.
+public let kProject: Project = Project(
+    name: kProjectName,
+    options: .options(),
+    targets: [
+        Target(
+            name: kProjectName,
+            platform: .iOS,
+            product: .app,
+            bundleId: "\(kOrgName).\(kProjectName)",
+            deploymentTarget: .iOS(targetVersion: kMinTgtVersion, devices: .iphone),
+            infoPlist: .extendingDefault(with: kInfoPlist),
+            sources: .paths([.relativeToManifest("App/\(kProjectName)/Sources/**")]),
+            scripts: [.pre(tool: "swiftlint", name: "Run SwiftLint")]
+        ),
+        Target(
+            name: "\(kProjectName)Tests",
+            platform: .iOS,
+            product: .unitTests,
+            bundleId: "\(kOrgName).\(kProjectName)Tests",
+            infoPlist: .default,
+            sources: .paths([.relativeToManifest("App/\(kProjectName)/Tests/**")]),
+            dependencies: [
+                .target(name: kProjectName)
+            ]
+        ),
+    ]
+)

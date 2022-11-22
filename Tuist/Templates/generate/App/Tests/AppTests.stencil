@@ -1,0 +1,22 @@
+import XCTest
+
+/// Test case runner for app.
+public final class {{name}}Tests: XCTestCase {
+    /// This method is called before the invocation of first test method in the class.
+    private static func setUpWithError() throws {
+    }
+
+    /// This method is called after the invocation of last test method in the class.
+    private static func tearDownWithError() throws {
+    }
+
+    /// This method is called before the invocation of each test method in the class.
+    override public func setUpWithError() throws {
+        try super.setUpWithError()
+    }
+
+    /// This method is called after the invocation of each test method in the class.
+    override public func tearDownWithError() throws {
+        try super.tearDownWithError()
+    }
+}

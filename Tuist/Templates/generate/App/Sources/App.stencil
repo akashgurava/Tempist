@@ -1,0 +1,17 @@
+import Foundation
+import SwiftUI
+
+@main
+private struct {{ name }}App: App {
+    var body: some Scene {
+        WindowGroup {
+            Text("Hello, world!").padding()
+        }
+    }
+
+    /// Setup app initial state.
+    init() {
+        AppLogger.logAppInitStart()
+        AppLogger.logAppInitSuccess()
+    }
+}

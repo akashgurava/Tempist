@@ -1,0 +1,6 @@
+/// App name.
+internal let kAppName = "{{name}}"
+/// Organization name.
+public let kOrgName = "{{org}}"
+/// App identifier.
+internal let kAppIdentifier = "\(kOrgName).\(kAppName)"

@@ -1,0 +1,9 @@
+{
+    "cSpell.words": [
+        "swiftlint",
+        "Tuist"
+    ],
+    "cSpell.ignorePaths": [
+        "**.swift-format"
+    ]
+}
